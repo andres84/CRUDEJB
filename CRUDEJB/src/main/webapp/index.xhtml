@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Usuarios</title>
+    </h:head>
+    <h:body>
+        
+        
+        <h:form>
+            
+            <h:link value="Agregar Usuario" outcome="creacionUsuario"/>
+            <p:dataTable var="t" value="#{controladorUsuario.listarUsuario()}">
+                
+                <f:facet name="header">Lista de Usuarios</f:facet>
+                
+                <p:column headerText="Id">
+                    
+                    <h:outputText value="#{t.codigo}"/>
+                    
+                </p:column>
+                
+                <p:column headerText="Nombre">
+                    
+                    <h:outputText value="#{t.nombre}"/>
+                    
+                </p:column>
+                
+                <p:column headerText="Apellido">
+                    
+                    <h:outputText value="#{t.apellido}"/>
+                    
+                </p:column>
+                
+                <p:column>
+                    
+                    <h:commandButton value="Eliminar" action="#{controladorUsuario.eliminar(t)}" onclick="return confirm('Esta Seguro?')"/> |
+                    <h:commandButton value="Editar" action="#{controladorUsuarioEditar.editarUsuario(t)}"/>
+                    
+                </p:column>
+                
+            </p:dataTable>
+            
+            
+        </h:form>
+        
+        
+    </h:body>
+</html>
+
